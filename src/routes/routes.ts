@@ -15,10 +15,11 @@ export class Routes {
         /** Adjuntamos el tipo de petición que debe mandar el cliente para acceder
          *  al recurso: GET, POST, PUT, ETC 
         */
+       app.route('/api/log-in').post(UserController.logIn)
         app.route('/api/example')
             .get(/*En esta parte agregamos los middlewares que sean necesarios, ejemplo: CheckHeaders.validateClientJWT*,*/ this.exampleController.users)
-        app.route('/api/users')
-            .get(CheckHeaders.test, this.exampleController.users)
-        app.route('/api/user').post(UserController.getUser);
+      
+        app.route('/api/users').post(CheckHeaders.validateJWT, UserController.getUsers);
+        app.route('/api/user').post( UserController.getUsers);
     }
 }

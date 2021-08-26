@@ -1,37 +1,31 @@
 import { Model, DataTypes } from 'sequelize'
 import { database } from '../config/database'
 
-export class UserModel extends Model {
+export class CountryModel extends Model {
     /** Declaramos cada uno de los atributos del modelo */
-    public id_user!: number;
-    public fk_country!:number;
-    public name!: string;
-    public email!: string;
-    public age!: number;
+    public id_country!: number;
+    public country_code!: string;
+    public country_name!: string;
+    
 }
 
 /** Inicializamos el modelo a utilizar, debemos establecer cada una de las 
  * propiedades que creamos en la sección anterior.
  */
-UserModel.init({
+ CountryModel.init({
     // Example:
-    id_user: {
+    id_country: {
         type: DataTypes.INTEGER.UNSIGNED,
         autoIncrement: true,
         primaryKey: true
     },
-    fk_country:{
-        type: DataTypes.INTEGER,
-    },
-    name:{
+    country_code:{
         type:DataTypes.STRING,
     },
-    email:{
+    country_name:{
         type:DataTypes.STRING,
     },
-    age:{
-        type:DataTypes.INTEGER,
-    },
+    
 }, {
     /** Aquí podemos agregar opciones adicionales. Por default. La librería 
      *  interpreta que todas las tablas de la base de datos contienen las columnas:
@@ -41,5 +35,5 @@ UserModel.init({
      */
     timestamps:false,
     sequelize: database,
-    tableName: 'user'
+    tableName: 'countries'
 })

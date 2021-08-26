@@ -34,7 +34,9 @@ class App {
   /** Creamos el motor principal del servidor */
   private config(): void {
     InitializationRelationship.init();
-    this.app.use(cors())
+    this.app.use(cors({
+      origin:'http://localhost:3000/'
+    }))
     /***
      * "Helmet" nos ayuda a meter una capa de seguridad a las cabeceras HTTP, por medio de:
      * X-DNS-Prefetch-Control, X-Frame-Options, x-powered-by, 
